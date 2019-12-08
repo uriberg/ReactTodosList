@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Component } from 'react'
+import { Provider } from 'mobx-react'
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reactt
-        </a>
-      </header>
-    </div>
-  );
+import { TodoStore } from './TodoStore'
+import { TodoAdd } from './TodoAdd'
+import { TodoList } from './TodoList'
+
+class App extends Component {
+  private todoStore: TodoStore = new TodoStore()
+
+  render() {
+    return (
+        <Provider todoStore={this.todoStore}>
+          <div>
+            <TodoAdd />
+            <TodoList />
+          </div>
+        </Provider>
+    )
+  }
 }
 
 export default App;
