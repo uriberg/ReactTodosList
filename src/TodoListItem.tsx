@@ -1,9 +1,15 @@
 import React from 'react'
 
-import { Todo } from './TodoStore'
+import {Todo} from './TodoStore'
+import {Checkbox} from 'semantic-ui-react';
 
 interface TodoListItemProps {
-    todo: Todo
+    todo: Todo;
+    toggleCheckbox: (noteId: string, todoId: string) => void;
+    noteId: string;
 }
 
-export const TodoListItem = ({ todo }: TodoListItemProps) => <div>{todo.task}</div>
+export const TodoListItem = ({todo, toggleCheckbox, noteId}: TodoListItemProps) =>
+    <div>
+        <Checkbox label={todo.task} checked={todo.isComplete} onClick={()=> toggleCheckbox(noteId ,todo._id!)}/>
+    </div>

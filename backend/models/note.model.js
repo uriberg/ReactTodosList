@@ -1,14 +1,23 @@
 const mongoose = require('mongoose');
-const Item = require('./item.model');
-
 const Schema = mongoose.Schema;
 
-const noteSchema = new Schema({
-  name: {type: String, required: true},
-  creationDate: {type: Date, required: true}
-  //items: [Item]
+const TodoItemSchema = new Schema({
+    task: String,
+    isComplete: Boolean
 });
 
-const Note = mongoose.model('Note', noteSchema);
+
+const NoteSchema = new Schema({
+        name: {type: String, required: true},
+        todoList: {type: [TodoItemSchema], required: false}
+        //creationDate: {type: Date, required: true}
+        //items: [Item]
+    },
+    {
+        timestamps: true
+    }
+);
+
+const Note = mongoose.model('Note', NoteSchema);
 
 module.exports = Note;

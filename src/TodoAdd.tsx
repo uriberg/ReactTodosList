@@ -12,17 +12,16 @@ interface TodoAddProps {
 @inject('todoStore')
 @observer
 export class TodoAdd extends Component<TodoAddProps> {
-    @observable private task: string = ''
+    @observable private task: string = '';
 
     handleTaskChange = ({ currentTarget: { value } }: React.SyntheticEvent<HTMLInputElement>) => {
         this.task = value
-    }
+    };
 
     handleAddTodo = () => {
-        // @ts-ignore
-        this.props.todoStore.addTodo(this.task)
+        /*this.props.todoStore!.addTodo(this.task);*/
         this.task = ''
-    }
+    };
 
     render() {
         return (

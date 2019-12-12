@@ -3,18 +3,16 @@ import { Component } from 'react'
 import { Provider } from 'mobx-react'
 
 import { TodoStore } from './TodoStore'
-import { TodoAdd } from './TodoAdd'
-import { TodoList } from './TodoList'
+import NoteList from "./NoteList";
 
 class App extends Component {
-  private todoStore: TodoStore = new TodoStore()
+  private todoStore: TodoStore = new TodoStore();
 
   render() {
     return (
         <Provider todoStore={this.todoStore}>
           <div>
-            <TodoAdd />
-            <TodoList />
+            <NoteList/>
           </div>
         </Provider>
     )
